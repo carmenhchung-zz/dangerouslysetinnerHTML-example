@@ -11,7 +11,7 @@ function App() {
 
   useEffect(() => {
     async function fetchData() {
-      const items = await axios.get('http://localhost:5000/items');
+      const items = await axios.get(`${process.env.REACT_APP_API_LOCATION}/items`);
       setForum(items.data)
     }
 
@@ -24,14 +24,14 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const item = await axios.post('http://localhost:5000/items', form);
+    const item = await axios.post(`${process.env.REACT_APP_API_LOCATION}/items`, form);
     setForum([...forum, item.data]);
     setForm({name: '', twitterHandle: '', comment: ''});
   }
 
   const handleDelete = async (e, id) => {
     e.preventDefault();
-    await axios.delete(`http://localhost:5000/items/${id}`);
+    await axios.delete(`${process.env.REACT_APP_API_LOCATION}/items/${id}`);
     const newForum = forum.filter(item => item._id !== id);
     setForum(newForum);
   }
