@@ -1,41 +1,39 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './App.css';
 
 function App() {
   const [form, setForm] = useState(
-    {user: '', twitter: '', comment: ''}
+    {name: '', twitterHandle: '', comment: ''}
   );
 
-  const [forum, setForum] = useState([
-    {user: 'Carmen', twitter: 'https://www.twitter.com/carmenhchung', comment: 'stretch stretch', id: 1},
-    {user: 'Sachi', twitter: 'https://www.twitter.com/sachidog', comment: 'woof woof', id: 2}
-  ]);
+  const [forum, setForum] = useState([]);
 
   useEffect(() => {
-    const item = window.localStorage.getItem('forum');
-    if (item) {
-      setForum(JSON.parse(item))
-    } else {
-      window.localStorage.setItem('forum', JSON.stringify(forum))
+    async function fetchData() {
+      const items = await axios.get('http://localhost:5000/items');
+      setForum(items.data)
     }
+
+    fetchData();
   }, [])
 
   const handleFormChange = (e) => {
-    setForm({...form, [e.target.name]: e.target.value})
+    setForm({...form, [e.target.name]: e.target.value});
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setForum([...forum, {...form, id: forum.length + 1}])
-    setForm({user: '', twitter: '', comment: ''})
-    window.localStorage.setItem('forum', JSON.stringify([...forum, {...form, id: forum.length + 1}]))
+    const item = await axios.post('http://localhost:5000/items', form);
+    setForum([...forum, item.data]);
+    setForm({name: '', twitterHandle: '', comment: ''});
   }
 
-  const handleDelete = (e, id) => {
+  const handleDelete = async (e, id) => {
     e.preventDefault();
-    const newForum = forum.filter(item => item.id !== id);
-    setForum(newForum)
-    window.localStorage.setItem('forum', JSON.stringify(newForum))
+    await axios.delete(`http://localhost:5000/items/${id}`);
+    const newForum = forum.filter(item => item._id !== id);
+    setForum(newForum);
   }
 
   return (
@@ -46,10 +44,10 @@ function App() {
           forum && forum.length && forum.map(item =>
             <li key={item.comment}>
               <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
-                <p>{item.user}</p>
-                <a href={item.twitter} target="_blank">Twitter</a>
-                <p dangerouslySetInnerHTML={{__html: `${item.comment}`}}></p>
-                <button onClick={(e) => handleDelete(e, item.id)}>Delete me</button>
+                <p>{item.name}</p>
+                <a href={item.twitterHandle} target="_blank">Twitter</a>
+                <p dangerouslySetInnerHTML={{__html: item.comment}}></p>
+                <button onClick={(e) => handleDelete(e, item._id)}>Delete me</button>
               </div>
             </li>
           )
@@ -61,16 +59,16 @@ function App() {
           <input
             id="name"
             type="text"
-            name="user"
-            value={form.user}
+            name="name"
+            value={form.name}
             onChange={handleFormChange}
           />
-          <label htmlFor="twitter">Twitter Handle</label>
+          <label htmlFor="twitterHandle">Twitter Handle</label>
           <input
             id="twitter"
             type="text"
-            name="twitter"
-            value={form.twitter}
+            name="twitterHandle"
+            value={form.twitterHandle}
             onChange={handleFormChange}
           />
           <label htmlFor="comment">Comment</label>
