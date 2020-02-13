@@ -38,49 +38,57 @@ function App() {
 
   return (
     <div className="App">
-      <h1>ReactConf AU 2020</h1>
-      <ul>
-        {
-          forum && forum.length && forum.map(item =>
-            <li key={item.comment}>
-              <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
-                <p>{item.name}</p>
-                <a href={item.twitterHandle} target="_blank">Twitter</a>
-                <p dangerouslySetInnerHTML={{__html: item.comment}}></p>
-                <button onClick={(e) => handleDelete(e, item._id)}>Delete me</button>
-              </div>
-            </li>
-          )
-        }
-      </ul>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="name">Name</label>
-          <input
-            id="name"
-            type="text"
-            name="name"
-            value={form.name}
-            onChange={handleFormChange}
-          />
-          <label htmlFor="twitterHandle">Twitter Handle</label>
-          <input
-            id="twitter"
-            type="text"
-            name="twitterHandle"
-            value={form.twitterHandle}
-            onChange={handleFormChange}
-          />
-          <label htmlFor="comment">Comment</label>
-          <input
-            id="comment"
-            type="text"
-            name="comment"
-            value={form.comment}
-            onChange={handleFormChange}
-          />
-          <button id="submit-btn" type="submit">SUBMIT</button>
-        </form>
+      <header className="toolbar">
+        <img alt="ReactConf" src="./logo.svg" className="toolbar--logo" />
+        <ul className="toolbar--nav">
+          <li className="toolbar--nav-item">FORUM</li>
+        </ul>
+      </header>
+      <div class="container">
+        <img alt="ReactConf" src="./logo--on-white.svg" className="logo" />
+        <ul>
+          {
+            forum && forum.length && forum.map(item =>
+              <li key={item.comment}>
+                <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
+                  <p>{item.name}</p>
+                  <a href={item.twitterHandle} target="_blank" rel="noopener noreferrer">Twitter</a>
+                  <p dangerouslySetInnerHTML={{__html: item.comment}}></p>
+                  <button onClick={(e) => handleDelete(e, item._id)}>Delete me</button>
+                </div>
+              </li>
+            )
+          }
+        </ul>
+        <div>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="name">Name</label>
+            <input
+              id="name"
+              type="text"
+              name="name"
+              value={form.name}
+              onChange={handleFormChange}
+            />
+            <label htmlFor="twitterHandle">Twitter Handle</label>
+            <input
+              id="twitter"
+              type="text"
+              name="twitterHandle"
+              value={form.twitterHandle}
+              onChange={handleFormChange}
+            />
+            <label htmlFor="comment">Comment</label>
+            <input
+              id="comment"
+              type="text"
+              name="comment"
+              value={form.comment}
+              onChange={handleFormChange}
+            />
+            <button id="submit-btn" type="submit">SUBMIT</button>
+          </form>
+        </div>
       </div>
     </div>
   );

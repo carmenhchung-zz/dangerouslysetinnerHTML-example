@@ -1,5 +1,6 @@
 .App {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -35,4 +36,41 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.toolbar {
+  display: flex;
+  height: 80px;
+  padding: 0 24px;
+  background: #0201D3;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.toolbar--logo {
+  width: 208px;
+  cursor: pointer;
+}
+
+.toolbar--nav {
+  color: #fff;
+  font-size: 19.2px;
+  font-weight: 600;
+  list-style: none;
+  padding: 0;
+}
+
+.toolbar--nav-item {
+  box-shadow: rgb(255, 49, 95) 0 -5px 0 0 inset;
+  cursor: pointer;
+}
+
+.container {
+  width: 1120px;
+  align-self: center;
+  margin-top: 28.8px;
+}
+
+.logo {
+  margin-top: 40px;
 }
