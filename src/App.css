@@ -1,38 +1,143 @@
+body {
+  font-family: 'Roboto Mono', monospace;
+}
+
 .App {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.toolbar {
+  display: flex;
+  height: 80px;
+  padding: 0 24px;
+  background: #0201D3;
+  align-items: center;
+  justify-content: space-between;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.toolbar--logo {
+  width: 208px;
+  cursor: pointer;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.toolbar--nav {
+  color: #fff;
+  font-size: 19.2px;
+  font-weight: 600;
+  list-style: none;
+  padding: 0;
+}
+
+.toolbar--nav-item {
+  box-shadow: rgb(255, 49, 95) 0 -5px 0 0 inset;
+  cursor: pointer;
+}
+
+.container {
+  width: 100%;
+  max-width: 1120px;
+  align-self: center;
+  margin-top: 28.8px;
+  margin-bottom: 20px;
+}
+
+.logo {
+  margin-top: 40px;
+}
+
+.forum {
+  list-style: none;
+  padding: 0;
+  margin-left: 86px;
+}
+
+.form__item {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.form__item-profile {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.form__item-profile-picture {
+  border-radius: 50%;
+  width: 100px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form__item-profile-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 10px;
+  text-decoration: none;
+  color: #000;
+  box-shadow: rgb(255, 49, 95) 0 -5px 0 0 inset;
 }
+
+.form__item-comment {
+  flex: 1;
+  margin-left: 40px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.form__item-comment p {
+  margin: 0;
+}
+
+.comment-form {
+  width: 540px;
+  margin-left: 86px;
+}
+
+.comment-form__heading {
+  display: inline-block;
+  box-shadow: rgb(255, 49, 95) 0 -5px 0 0 inset;
+}
+
+.comment-form__field {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.comment-form__label {
+  display: inline-block;
+  width: 160px;
+  text-align: right;
+  margin-right: 10px;
+  margin-top: 15px;
+}
+
+.comment-form__input {
+  flex: 1;
+  border: 3px solid #0201D3;
+  color: #0201D3;
+  padding: 15px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.comment-form__button {
+  background: #0201D3;
+  border: 0;
+  box-shadow: rgb(255, 49, 95) 10px 10px 0 0;
+  color: #fff;
+  cursor: pointer;
+  padding: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: transform .3s;
+  float: right;
+  margin-right: 10px;
+  outline: none;
+}
+
+.comment-form__button:hover {
+  transform: scale(1.05) translateY(-4px);
+}
+

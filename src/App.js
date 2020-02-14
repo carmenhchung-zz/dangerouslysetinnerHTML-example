@@ -38,49 +38,89 @@ function App() {
 
   return (
     <div className="App">
-      <h1>ReactConf AU 2020</h1>
-      <ul>
-        {
-          forum && forum.length && forum.map(item =>
-            <li key={item.comment}>
-              <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
-                <p>{item.name}</p>
-                <a href={item.twitterHandle} target="_blank">Twitter</a>
-                <p dangerouslySetInnerHTML={{__html: item.comment}}></p>
-                <button onClick={(e) => handleDelete(e, item._id)}>Delete me</button>
-              </div>
-            </li>
-          )
-        }
-      </ul>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="name">Name</label>
-          <input
-            id="name"
-            type="text"
-            name="name"
-            value={form.name}
-            onChange={handleFormChange}
-          />
-          <label htmlFor="twitterHandle">Twitter Handle</label>
-          <input
-            id="twitter"
-            type="text"
-            name="twitterHandle"
-            value={form.twitterHandle}
-            onChange={handleFormChange}
-          />
-          <label htmlFor="comment">Comment</label>
-          <input
-            id="comment"
-            type="text"
-            name="comment"
-            value={form.comment}
-            onChange={handleFormChange}
-          />
-          <button id="submit-btn" type="submit">SUBMIT</button>
-        </form>
+      <header className="toolbar">
+        <img alt="ReactConf" src="./logo.svg" className="toolbar--logo" />
+        <ul className="toolbar--nav">
+          <li className="toolbar--nav-item">FORUM</li>
+        </ul>
+      </header>
+      <div class="container">
+        <img alt="ReactConf" src="./logo--on-white.svg" className="logo" />
+        <ul className="forum">
+          <li className="form__item">
+            <div className="form__item-profile">
+              <img src="./carmen.jpg" alt="Carmen Chung" className="form__item-profile-picture" />
+              <a href="https://twitter.com/carmenhchung?lang=en" target="_blank" className="form__item-profile-name">Carmen</a>
+            </div>
+            <div className="form__item-comment">
+              <p>
+                "Loved talking about XSS attacks at the conference. Thanks for having me, ReactConf AU!"
+              </p>
+            </div>
+          </li>
+          <li className="form__item">
+            <div className="form__item-profile">
+              <img src="./carmen.jpg" alt="Sachi" className="form__item-profile-picture" />
+              <a href="https://twitter.com/carmenhchung?lang=en" target="_blank" className="form__item-profile-name">Sachi</a>
+            </div>
+            <div className="form__item-comment">
+              <p>
+                "Where was my invite?"
+              </p>
+            </div>
+          </li>
+          {
+            forum && forum.length && forum.map(item =>
+              <li className="form__item" key={item.comment}>
+                <div className="form__item-profile">
+                  <img src="./anon.png" alt="Anon" className="form__item-profile-picture" />
+                  <a href={item.twitterHandle} target="_blank" className="form__item-profile-name">{item.name}</a>
+                </div>
+                <div className="form__item-comment">
+                  <p dangerouslySetInnerHTML={{__html: item.comment}}></p>
+                </div>
+              </li>
+            )
+          }
+        </ul>
+        <div className="comment-form">
+          <h2 className="comment-form__heading">Comment:</h2>
+          <form className="comment-form__form" onSubmit={handleSubmit}>
+            <div className="comment-form__field">
+              <label htmlFor="name" className="comment-form__label">Name:</label>
+              <input
+                id="name"
+                type="text"
+                name="name"
+                className="comment-form__input"
+                value={form.name}
+                onChange={handleFormChange}
+              />
+            </div>
+            <div className="comment-form__field">
+              <label htmlFor="twitterHandle" className="comment-form__label">Twitter Handle:</label>
+              <input
+                id="twitter"
+                type="text"
+                name="twitterHandle"
+                className="comment-form__input"
+                value={form.twitterHandle}
+                onChange={handleFormChange}
+              />
+            </div>
+            <div className="comment-form__field">
+              <label htmlFor="comment" className="comment-form__label">Comment:</label>
+              <textarea
+                id="comment"
+                name="comment"
+                className="comment-form__input"
+                value={form.comment}
+                onChange={handleFormChange}
+              ></textarea>
+            </div>
+            <button id="submit-btn" className="comment-form__button" type="submit">SUBMIT</button>
+          </form>
+        </div>
       </div>
     </div>
   );
