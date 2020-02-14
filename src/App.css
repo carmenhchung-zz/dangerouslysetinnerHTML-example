@@ -69,8 +69,65 @@
   width: 1120px;
   align-self: center;
   margin-top: 28.8px;
+  margin-bottom: 20px;
 }
 
 .logo {
   margin-top: 40px;
 }
+
+.comment-form {
+  width: 480px;
+}
+
+.comment-form__heading {
+  display: inline-block;
+  box-shadow: rgb(255, 49, 95) 0 -5px 0 0 inset;
+}
+
+.comment-form__field {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.comment-form__label {
+  display: inline-block;
+  width: 120px;
+  text-align: right;
+  margin-right: 10px;
+  margin-top: 15px;
+}
+
+.comment-form__input {
+  border: 3px solid #0201D3;
+  color: #0201D3;
+  padding: 15px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.comment-form__input--textarea {
+  width: 300px;
+  flex: 1;
+}
+
+.comment-form__button {
+  background: #0201D3;
+  border: 0;
+  box-shadow: rgb(255, 49, 95) 10px 10px 0 0;
+  color: #fff;
+  cursor: pointer;
+  padding: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: transform .3s;
+  float: right;
+  margin-right: 10px;
+  outline: none;
+}
+
+.comment-form__button:hover {
+  transform: scale(1.05) translateY(-4px);
+}
+

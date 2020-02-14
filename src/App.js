@@ -60,33 +60,42 @@ function App() {
             )
           }
         </ul>
-        <div>
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="name">Name</label>
-            <input
-              id="name"
-              type="text"
-              name="name"
-              value={form.name}
-              onChange={handleFormChange}
-            />
-            <label htmlFor="twitterHandle">Twitter Handle</label>
-            <input
-              id="twitter"
-              type="text"
-              name="twitterHandle"
-              value={form.twitterHandle}
-              onChange={handleFormChange}
-            />
-            <label htmlFor="comment">Comment</label>
-            <input
-              id="comment"
-              type="text"
-              name="comment"
-              value={form.comment}
-              onChange={handleFormChange}
-            />
-            <button id="submit-btn" type="submit">SUBMIT</button>
+        <div className="comment-form">
+          <h2 className="comment-form__heading">Comment:</h2>
+          <form className="comment-form__form" onSubmit={handleSubmit}>
+            <div className="comment-form__field">
+              <label htmlFor="name" className="comment-form__label">Name:</label>
+              <input
+                id="name"
+                type="text"
+                name="name"
+                className="comment-form__input"
+                value={form.name}
+                onChange={handleFormChange}
+              />
+            </div>
+            <div className="comment-form__field">
+              <label htmlFor="twitterHandle" className="comment-form__label">Twitter Handle:</label>
+              <input
+                id="twitter"
+                type="text"
+                name="twitterHandle"
+                className="comment-form__input"
+                value={form.twitterHandle}
+                onChange={handleFormChange}
+              />
+            </div>
+            <div className="comment-form__field">
+              <label htmlFor="comment" className="comment-form__label">Comment:</label>
+              <textarea
+                id="comment"
+                name="comment"
+                className="comment-form__input comment-form__input--textarea"
+                value={form.comment}
+                onChange={handleFormChange}
+              ></textarea>
+            </div>
+            <button id="submit-btn" className="comment-form__button" type="submit">SUBMIT</button>
           </form>
         </div>
       </div>
