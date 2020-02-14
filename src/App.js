@@ -46,15 +46,38 @@ function App() {
       </header>
       <div class="container">
         <img alt="ReactConf" src="./logo--on-white.svg" className="logo" />
-        <ul>
+        <ul className="forum">
+          <li className="form__item">
+            <div className="form__item-profile">
+              <img src="./carmen.jpg" alt="Carmen Chung" className="form__item-profile-picture" />
+              <a href="https://twitter.com/carmenhchung?lang=en" target="_blank" className="form__item-profile-name">Carmen</a>
+            </div>
+            <div className="form__item-comment">
+              <p>
+                "Loved talking about XSS attacks at the conference. Thanks for having me, ReactConf AU!"
+              </p>
+            </div>
+          </li>
+          <li className="form__item">
+            <div className="form__item-profile">
+              <img src="./carmen.jpg" alt="Sachi" className="form__item-profile-picture" />
+              <a href="https://twitter.com/carmenhchung?lang=en" target="_blank" className="form__item-profile-name">Sachi</a>
+            </div>
+            <div className="form__item-comment">
+              <p>
+                "Where was my invite?"
+              </p>
+            </div>
+          </li>
           {
             forum && forum.length && forum.map(item =>
-              <li key={item.comment}>
-                <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
-                  <p>{item.name}</p>
-                  <a href={item.twitterHandle} target="_blank" rel="noopener noreferrer">Twitter</a>
+              <li className="form__item" key={item.comment}>
+                <div className="form__item-profile">
+                  <img src="./anon.png" alt="Anon" className="form__item-profile-picture" />
+                  <a href={item.twitterHandle} target="_blank" className="form__item-profile-name">{item.name}</a>
+                </div>
+                <div className="form__item-comment">
                   <p dangerouslySetInnerHTML={{__html: item.comment}}></p>
-                  <button onClick={(e) => handleDelete(e, item._id)}>Delete me</button>
                 </div>
               </li>
             )
@@ -90,7 +113,7 @@ function App() {
               <textarea
                 id="comment"
                 name="comment"
-                className="comment-form__input comment-form__input--textarea"
+                className="comment-form__input"
                 value={form.comment}
                 onChange={handleFormChange}
               ></textarea>
