@@ -60,7 +60,7 @@ function App() {
           </li>
           <li className="form__item">
             <div className="form__item-profile">
-              <img src="./sachi.jpg" alt="Sachi" className="form__item-profile-picture" />
+              <img src="./sachi.jpg" alt="Sachi Dog" className="form__item-profile-picture" />
               <a href="https://twitter.com/carmenhchung?lang=en" target="_blank" className="form__item-profile-name">Sachi</a>
             </div>
             <div className="form__item-comment">
