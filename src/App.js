@@ -49,7 +49,7 @@ function App() {
         <ul className="forum">
           <li className="form__item">
             <div className="form__item-profile">
-              <img src="./carmen.jpg" alt="Carmen Chung" className="form__item-profile-picture" />
+              <img src="./carmen-profile.jpg" alt="Carmen Chung" className="form__item-profile-picture" />
               <a href="https://twitter.com/carmenhchung?lang=en" target="_blank" className="form__item-profile-name">Carmen</a>
             </div>
             <div className="form__item-comment">
@@ -60,7 +60,7 @@ function App() {
           </li>
           <li className="form__item">
             <div className="form__item-profile">
-              <img src="./sachi.jpg" alt="Sachi Dog" className="form__item-profile-picture" />
+              <img src="./sachi-profile.jpg" alt="Sachi Dog" className="form__item-profile-picture" />
               <a href="https://twitter.com/carmenhchung?lang=en" target="_blank" className="form__item-profile-name">Sachi</a>
             </div>
             <div className="form__item-comment">
