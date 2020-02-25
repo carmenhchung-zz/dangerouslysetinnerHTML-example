@@ -54,7 +54,7 @@ function App() {
             </div>
             <div className="form__item-comment">
               <p>
-                "Loved talking about XSS attacks at the conference. Thanks for having me, ReactConf AU!"
+                Loved talking about <b>XSS attacks</b> at the conference. Thanks for having me, ReactConf AU!
               </p>
             </div>
           </li>
@@ -65,7 +65,7 @@ function App() {
             </div>
             <div className="form__item-comment">
               <p>
-                "Where was my invite?"
+                Where was <i>my</i> invite?
               </p>
             </div>
           </li>
